@@ -6,7 +6,7 @@ import "./App.css";
 function App() {
   console.log("App running");
   const [showParagraph, setShow] = useState(false);
-  const [listTitle, setListTitle] = useState("My List");
+
   const [toggleAllowed, setToggleAllowed] = useState(false);
 
   const toggle = useCallback(() => {
@@ -20,8 +20,8 @@ function App() {
   const listItems = useMemo(() => [5, 4, 7, -2, 3, 0], []);
   return (
     <div className="app">
-      <h1>Hi there!</h1>
-      <Demo title={listTitle} items={listItems} show={showParagraph} />
+      <h3>useMemo, React.memo, useCallback</h3>
+      <Demo title="List" items={listItems} show={showParagraph} />
       <Button onClick={toggle} disabled={!toggleAllowed}>
         Toggle List
       </Button>
