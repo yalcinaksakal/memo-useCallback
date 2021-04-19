@@ -21,7 +21,9 @@ function App() {
     <div className="app">
       <h1>Hi there!</h1>
       <Demo show={showParagraph} />
-      <Button onClick={toggle}>Toggle Paragraph</Button>
+      <Button onClick={toggle} disabled={!toggleAllowed}>
+        Toggle Paragraph
+      </Button>
       <Button onClick={toggleAllow}>Allow Toggling</Button>
     </div>
   );
