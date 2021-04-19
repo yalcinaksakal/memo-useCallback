@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import Button from "./components/UI/Button/Button";
 import Demo from "./components/Demo/Demo";
 import "./App.css";
@@ -6,7 +6,7 @@ import "./App.css";
 function App() {
   console.log("App running");
   const [showParagraph, setShow] = useState(false);
-
+  const [listTitle, setListTitle] = useState("My List");
   const [toggleAllowed, setToggleAllowed] = useState(false);
 
   const toggle = useCallback(() => {
@@ -17,14 +17,15 @@ function App() {
     setToggleAllowed(prevState => !prevState);
   }, []);
 
+  const listItems = useMemo(() => [5, 4, 7, -2, 3, 0], []);
   return (
     <div className="app">
       <h1>Hi there!</h1>
-      <Demo show={showParagraph} />
+      <Demo title={listTitle} items={listItems} show={showParagraph} />
       <Button onClick={toggle} disabled={!toggleAllowed}>
-        Toggle Paragraph
+        Toggle List
       </Button>
-      <Button onClick={toggleAllow}>Allow Toggling</Button>
+      <Button onClick={toggleAllow}>Toggle Toggling</Button>
     </div>
   );
 }
